@@ -20,7 +20,6 @@ class AwaitableUvicornServer(uvicorn.Server):
         self._startup_future = asyncio.get_event_loop().create_future()
 
     async def startup(self, sockets: Optional[List[socket.socket]] = None) -> None:
-        print("startup")
         try:
             result = await super().startup(sockets)
             self._startup_future.set_result(True)

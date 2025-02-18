@@ -16,8 +16,9 @@ _running_server: 'typing.Optional[AwaitableUvicornServer]' = None
 
 async def run_function_app(
     app: 'FastAPI',
-    log_level: str = 'error',
+    log_level: str = 'info',
     kill_existing_app_server: bool = True,
+    wait_for_exit: bool = False
 ) -> ConnectionInfo:
     global _running_server
     from ._uvicorn_util import AwaitableUvicornServer
@@ -61,9 +62,8 @@ async def run_function_app(
         log_level=log_level,
     )
     _running_server = AwaitableUvicornServer(config)
-    print(_running_server)
-    print("before running server")
-    asyncio.create_task(_running_server.serve())
+
+    task = asyncio.create_task(_running_server.serve())
     await _running_server.wait_for_startup()
     print("after running server")
     connection_info = ConnectionInfo(app_config.base_url, app_config.token)
@@ -88,4 +88,7 @@ async def run_function_app(
               """).strip(),
             )
 
+    if wait_for_exit:
+        await task
+    
     return connection_info

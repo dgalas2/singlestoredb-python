@@ -5,6 +5,7 @@ from typing import Optional
 
 @dataclass
 class AppConfig:
+    env: str
     listen_port: int
     base_url: str
     base_path: str
@@ -22,13 +23,22 @@ class AppConfig:
                 'Is the code running outside SingleStoreDB notebook environment?',
             )
         return value
+    
+    @staticmethod
+    def _get_env_var_name(env: str, name: str) -> str:
+        if env == "":
+            return ""
+        else:
+            return env + "_" + name
 
     @classmethod
     def from_env(cls) -> 'AppConfig':
-        port = cls._read_variable('SINGLESTOREDB_APP_LISTEN_PORT')
-        base_url = cls._read_variable('SINGLESTOREDB_APP_BASE_URL')
-        base_path = cls._read_variable('SINGLESTOREDB_APP_BASE_PATH')
+        env = cls._read_variable('ENV')
+        port = cls._read_variable(cls._get_env_var_name(env,'LISTEN_PORT'))
+        base_url = cls._read_variable(cls._get_env_var_name(env,'BASE_URL'))
+        base_path = cls._read_variable(cls._get_env_var_name(env,'BASE_PATH'))
 
+        
         workload_type = os.environ.get('SINGLESTOREDB_WORKLOAD_TYPE')
         running_interactively = workload_type == 'InteractiveNotebook'
 
@@ -46,6 +56,7 @@ class AppConfig:
                 user_token = cls._read_variable('SINGLESTOREDB_USER_TOKEN')
 
         return cls(
+            env=env,
             listen_port=int(port),
             base_url=base_url,
             base_path=base_path,

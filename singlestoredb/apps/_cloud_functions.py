@@ -48,12 +48,12 @@ async def run_function_app(
         kill_process_by_port(app_config.listen_port)
 
     # Add `GET /` route, used for liveness check
-    @app.get('/')
+    @app.get('/ping')
     def ping() -> str:
         return 'Success!'
 
     app.root_path = app_config.base_path
-
+    print(app_config)
     config = uvicorn.Config(
         app,
         host='0.0.0.0',
@@ -61,10 +61,11 @@ async def run_function_app(
         log_level=log_level,
     )
     _running_server = AwaitableUvicornServer(config)
-
+    print(_running_server)
+    print("before running server")
     asyncio.create_task(_running_server.serve())
     await _running_server.wait_for_startup()
-
+    print("after running server")
     connection_info = ConnectionInfo(app_config.base_url, app_config.token)
 
     if app_config.running_interactively:

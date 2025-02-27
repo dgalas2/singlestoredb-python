@@ -49,7 +49,7 @@ async def run_function_app(
         kill_process_by_port(app_config.listen_port)
 
     # Add `GET /` route, used for liveness check
-    @app.get('/ping')
+    @app.get('/')
     def ping() -> str:
         return 'Success!'
 

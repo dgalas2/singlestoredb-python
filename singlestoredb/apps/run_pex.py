@@ -11,12 +11,12 @@ def ping_port(port, timeout):
 
     global status
     while time.time() - start_time < timeout:
-        response = requests.get(url, timeout = 5)  # 5-second timeout for each request
+        response = requests.get(url, timeout = 5)
         if response.status_code == 200:
             status = True
             return True
         
-        time.sleep(1)  # Wait before trying again
+        time.sleep(5)
 
     status = False
     return False

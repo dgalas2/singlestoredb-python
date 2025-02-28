@@ -101,6 +101,7 @@
 <li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.connection.Cursor.scroll.html">Cursor.scroll</a></li>
 <li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.connection.Cursor.next.html">Cursor.next</a></li>
 <li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.connection.Cursor.is_connected.html">Cursor.is_connected</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uploading-from-streaming-sources">Uploading from streaming sources</a></li>
 </ul>
 </li>
 </ul>
@@ -192,18 +193,32 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#server-tools">Server Tools</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/singlestoredb.server.docker.start.html">singlestoredb.server.docker.start</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.logs.html">singlestoredb.server.docker.SingleStoreDB.logs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.connect.html">singlestoredb.server.docker.SingleStoreDB.connect</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.connect_kai.html">singlestoredb.server.docker.SingleStoreDB.connect_kai</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.connection_url.html">singlestoredb.server.docker.SingleStoreDB.connection_url</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.http_connection_url.html">singlestoredb.server.docker.SingleStoreDB.http_connection_url</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.kai_url.html">singlestoredb.server.docker.SingleStoreDB.kai_url</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.studio_url.html">singlestoredb.server.docker.SingleStoreDB.studio_url</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.open_studio.html">singlestoredb.server.docker.SingleStoreDB.open_studio</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.open_shell.html">singlestoredb.server.docker.SingleStoreDB.open_shell</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.open_mongosh.html">singlestoredb.server.docker.SingleStoreDB.open_mongosh</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.stop.html">singlestoredb.server.docker.SingleStoreDB.stop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docker">Docker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.server.docker.start.html">singlestoredb.server.docker.start</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.logs.html">singlestoredb.server.docker.SingleStoreDB.logs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.connect.html">singlestoredb.server.docker.SingleStoreDB.connect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.connect_kai.html">singlestoredb.server.docker.SingleStoreDB.connect_kai</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.connection_url.html">singlestoredb.server.docker.SingleStoreDB.connection_url</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.http_connection_url.html">singlestoredb.server.docker.SingleStoreDB.http_connection_url</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.kai_url.html">singlestoredb.server.docker.SingleStoreDB.kai_url</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.studio_url.html">singlestoredb.server.docker.SingleStoreDB.studio_url</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.open_studio.html">singlestoredb.server.docker.SingleStoreDB.open_studio</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.open_shell.html">singlestoredb.server.docker.SingleStoreDB.open_shell</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.open_mongosh.html">singlestoredb.server.docker.SingleStoreDB.open_mongosh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.stop.html">singlestoredb.server.docker.SingleStoreDB.stop</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cloud-free-tier">Cloud Free Tier</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.server.free_tier.start.html">singlestoredb.server.free_tier.start</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.server.free_tier.SingleStoreDB.connect.html">singlestoredb.server.free_tier.SingleStoreDB.connect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.server.free_tier.SingleStoreDB.connection_url.html">singlestoredb.server.free_tier.SingleStoreDB.connection_url</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.server.free_tier.SingleStoreDB.http_connection_url.html">singlestoredb.server.free_tier.SingleStoreDB.http_connection_url</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.server.free_tier.SingleStoreDB.kai_url.html">singlestoredb.server.free_tier.SingleStoreDB.kai_url</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.server.free_tier.SingleStoreDB.open_shell.html">singlestoredb.server.free_tier.SingleStoreDB.open_shell</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.server.free_tier.SingleStoreDB.open_mongosh.html">singlestoredb.server.free_tier.SingleStoreDB.open_mongosh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/singlestoredb.server.free_tier.SingleStoreDB.stop.html">singlestoredb.server.free_tier.SingleStoreDB.stop</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a><ul>
@@ -445,6 +460,71 @@ created using the <a class="reference internal" href="generated/singlestoredb.co
 </tr>
 </tbody>
 </table>
+<section id="uploading-from-streaming-sources">
+<h4>Uploading from streaming sources<a class="headerlink" href="#uploading-from-streaming-sources" title="Link to this heading">¶</a></h4>
+<p>While the standard way of loading a local file using <code class="docutils literal notranslate"><span class="pre">LOAD</span> <span class="pre">DATA</span> <span class="pre">LOCAL</span> <span class="pre">INFILE</span></code>
+is well-known, it is possible to load data from programmatic sources
+as well. This means that you can generate data with a Python function
+and load that data into the database without writing it to a file
+first. Below are two methods of doing this. Both of them use the
+<code class="docutils literal notranslate"><span class="pre">local_infile=true</span></code> parameter on the connection and the <code class="docutils literal notranslate"><span class="pre">infile_stream=</span></code>
+option on the <code class="docutils literal notranslate"><span class="pre">cursor.execute</span></code> method.</p>
+<section id="uploading-data-using-a-generator-function">
+<h5>Uploading data using a generator function<a class="headerlink" href="#uploading-data-using-a-generator-function" title="Link to this heading">¶</a></h5>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span> <span class="o">=</span> <span class="n">s2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;s2-host.com/my_db?local_infile=true&#39;</span><span class="p">)</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">upload_csv</span><span class="p">():</span>
+    <span class="k">yield</span> <span class="s1">&#39;1,2,3</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="k">yield</span> <span class="s1">&#39;4,5,6</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="k">yield</span> <span class="s1">&#39;7,8,9</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="c1"># Note that the data returned does not have to</span>
+    <span class="c1"># correspond to a single row. Any length of</span>
+    <span class="c1"># data can be returned.</span>
+    <span class="k">yield</span> <span class="s1">&#39;10,11,12</span><span class="se">\n</span><span class="s1">13,14,15</span><span class="se">\n</span><span class="s1">&#39;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;CREATE TABLE generator (a INT, b INT, c INT)&#39;</span><span class="p">)</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    LOAD DATA LOCAL INFILE &#39;:stream:&#39; INTO TABLE generator</span>
+<span class="sd">        FIELDS TERMINATED BY &#39;,&#39; ENCLOSED BY &#39;&quot;&#39;</span>
+<span class="sd">    &#39;&#39;&#39;</span><span class="p">,</span>
+    <span class="n">infile_stream</span><span class="o">=</span><span class="n">upload_csv</span><span class="p">(),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="uploading-data-using-a-queue-and-threads">
+<h5>Uploading data using a queue and threads<a class="headerlink" href="#uploading-data-using-a-queue-and-threads" title="Link to this heading">¶</a></h5>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">queue</span> <span class="kn">import</span> <span class="n">Queue</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">s2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;s2-host.com/my_db?local_infile=true&#39;</span><span class="p">)</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">data_feeder</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;CREATE TABLE queue (a INT, b INT, c INT)&#39;</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span>
+    <span class="n">target</span><span class="o">=</span><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">,</span>
+    <span class="n">args</span><span class="o">=</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        LOAD DATA LOCAL INFILE &#39;:stream:&#39; INTO TABLE queue</span>
+<span class="sd">            FIELDS TERMINATED BY &#39;,&#39; ENCLOSED BY &#39;&quot;&#39;</span>
+<span class="sd">        &#39;&#39;&#39;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">infile_stream</span><span class="o">=</span><span class="n">data_feeder</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">data_feeder</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s1">&#39;1,2,3</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">data_feeder</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s1">&#39;4,5,6</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">data_feeder</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s1">&#39;7,8,9</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="c1"># Note that the data sent does not have to</span>
+<span class="c1"># correspond to a single row. Any length of</span>
+<span class="c1"># data can be sent.</span>
+<span class="n">data_feeder</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s1">&#39;10,11,12</span><span class="se">\n</span><span class="s1">13,14,15</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="c1"># Send an empty string to end the data loader.</span>
+<span class="n">data_feeder</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 </section>
 <section id="utilities">
@@ -716,6 +796,11 @@ calls to the currently selected portal services.</p>
 </section>
 <section id="server-tools">
 <h2>Server Tools<a class="headerlink" href="#server-tools" title="Link to this heading">¶</a></h2>
+<p>It is possible to start a SingleStoreDB server from the Python SDK in a
+couple of ways: Docker or Cloud Free Tier. Both of these methods are
+described below.</p>
+<section id="docker">
+<h3>Docker<a class="headerlink" href="#docker" title="Link to this heading">¶</a></h3>
 <p>If you have Docker installed on your machine, you can use the Docker interface
 included with the Python SDK to start a SingleStoreDB server in Docker. This
 allows you to open interactive shells, SQL Studio, and also use the <cite>%sql</cite>
@@ -747,7 +832,7 @@ block.</p>
 down when the Python process exits.</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/singlestoredb.server.docker.start.html#singlestoredb.server.docker.start" title="singlestoredb.server.docker.start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code></a>([name, root_password, license, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/singlestoredb.server.docker.start.html#singlestoredb.server.docker.start" title="singlestoredb.server.docker.start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code></a>([name, password, license, enable_kai, ...])</p></td>
 <td><p>Manager for SingleStoreDB server running in Docker.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.logs.html#singlestoredb.server.docker.SingleStoreDB.logs" title="singlestoredb.server.docker.SingleStoreDB.logs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SingleStoreDB.logs</span></code></a>()</p></td>
@@ -780,11 +865,58 @@ down when the Python process exits.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.open_mongosh.html#singlestoredb.server.docker.SingleStoreDB.open_mongosh" title="singlestoredb.server.docker.SingleStoreDB.open_mongosh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SingleStoreDB.open_mongosh</span></code></a>()</p></td>
 <td><p>Open a mongosh in the SingleStoreDB server.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.stop.html#singlestoredb.server.docker.SingleStoreDB.stop" title="singlestoredb.server.docker.SingleStoreDB.stop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SingleStoreDB.stop</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/singlestoredb.server.docker.SingleStoreDB.stop.html#singlestoredb.server.docker.SingleStoreDB.stop" title="singlestoredb.server.docker.SingleStoreDB.stop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SingleStoreDB.stop</span></code></a>(*args)</p></td>
 <td><p>Stop the SingleStoreDB server.</p></td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="cloud-free-tier">
+<h3>Cloud Free Tier<a class="headerlink" href="#cloud-free-tier" title="Link to this heading">¶</a></h3>
+<p>The Cloud Free Tier interface works much in the same way as the Docker
+interface, although it doesn’t support as many features. To start a
+server in the Cloud Free Tier, you use the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singlestoredb.server</span> <span class="kn">import</span> <span class="n">free_tier</span>
+<span class="n">s2db</span> <span class="o">=</span> <span class="n">free_tier</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">s2db</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cur</span><span class="p">:</span>
+        <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SHOW DATABASES&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">cur</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="n">s2db</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Just as with the Docker interface, you can also use a Python
+context manager to automatically shut down your connection.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/singlestoredb.server.free_tier.start.html#singlestoredb.server.free_tier.start" title="singlestoredb.server.free_tier.start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code></a>()</p></td>
+<td><p>Manager for SingleStoreDB server running in Docker.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/singlestoredb.server.free_tier.SingleStoreDB.connect.html#singlestoredb.server.free_tier.SingleStoreDB.connect" title="singlestoredb.server.free_tier.SingleStoreDB.connect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SingleStoreDB.connect</span></code></a>([use_data_api])</p></td>
+<td><p>Connect to the SingleStoreDB server.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/singlestoredb.server.free_tier.SingleStoreDB.connection_url.html#singlestoredb.server.free_tier.SingleStoreDB.connection_url" title="singlestoredb.server.free_tier.SingleStoreDB.connection_url"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SingleStoreDB.connection_url</span></code></a></p></td>
+<td><p>Connection URL for the SingleStoreDB server.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/singlestoredb.server.free_tier.SingleStoreDB.http_connection_url.html#singlestoredb.server.free_tier.SingleStoreDB.http_connection_url" title="singlestoredb.server.free_tier.SingleStoreDB.http_connection_url"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SingleStoreDB.http_connection_url</span></code></a></p></td>
+<td><p>HTTP Connection URL for the SingleStoreDB server.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/singlestoredb.server.free_tier.SingleStoreDB.kai_url.html#singlestoredb.server.free_tier.SingleStoreDB.kai_url" title="singlestoredb.server.free_tier.SingleStoreDB.kai_url"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SingleStoreDB.kai_url</span></code></a></p></td>
+<td><p>Connection URL for the Kai (MongoDB) server.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/singlestoredb.server.free_tier.SingleStoreDB.open_shell.html#singlestoredb.server.free_tier.SingleStoreDB.open_shell" title="singlestoredb.server.free_tier.SingleStoreDB.open_shell"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SingleStoreDB.open_shell</span></code></a>()</p></td>
+<td><p>Open a shell in the SingleStoreDB server.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/singlestoredb.server.free_tier.SingleStoreDB.open_mongosh.html#singlestoredb.server.free_tier.SingleStoreDB.open_mongosh" title="singlestoredb.server.free_tier.SingleStoreDB.open_mongosh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SingleStoreDB.open_mongosh</span></code></a>()</p></td>
+<td><p>Open a mongosh in the SingleStoreDB server.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/singlestoredb.server.free_tier.SingleStoreDB.stop.html#singlestoredb.server.free_tier.SingleStoreDB.stop" title="singlestoredb.server.free_tier.SingleStoreDB.stop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SingleStoreDB.stop</span></code></a>(*args)</p></td>
+<td><p>Stop the SingleStoreDB server.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">¶</a></h2>

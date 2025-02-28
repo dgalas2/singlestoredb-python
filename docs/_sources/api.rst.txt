@@ -97,6 +97,66 @@ created using the :meth:`Connection.cursor` method.
    Cursor.scroll
    Cursor.next
    Cursor.is_connected
+Uploading from streaming sources
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+While the standard way of loading a local file using ``LOAD DATA LOCAL INFILE``
+is well-known, it is possible to load data from programmatic sources
+as well. This means that you can generate data with a Python function
+and load that data into the database without writing it to a file
+first. Below are two methods of doing this. Both of them use the
+``local_infile=true`` parameter on the connection and the ``infile_stream=``
+option on the ``cursor.execute`` method.
+Uploading data using a generator function
+:::::::::::::::::::::::::::::::::::::::::
+.. sourcecode:: python
+   conn = s2.connect('s2-host.com/my_db?local_infile=true')
+   cur = conn.cursor()
+   def upload_csv():
+       yield '1,2,3\n'
+       yield '4,5,6\n'
+       yield '7,8,9\n'
+       # Note that the data returned does not have to
+       # correspond to a single row. Any length of
+       # data can be returned.
+       yield '10,11,12\n13,14,15\n'
+   cur.execute('CREATE TABLE generator (a INT, b INT, c INT)')
+   cur.execute(
+       '''
+       LOAD DATA LOCAL INFILE ':stream:' INTO TABLE generator
+           FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+       ''',
+       infile_stream=upload_csv(),
+   )
+Uploading data using a queue and threads
+::::::::::::::::::::::::::::::::::::::::
+.. sourcecode:: python
+   from queue import Queue
+   from threading import Thread
+   conn = s2.connect('s2-host.com/my_db?local_infile=true')
+   cur = conn.cursor()
+   data_feeder = Queue()
+   cur.execute('CREATE TABLE queue (a INT, b INT, c INT)')
+   t = Thread(
+       target=cur.execute,
+       args=(
+           '''
+           LOAD DATA LOCAL INFILE ':stream:' INTO TABLE queue
+               FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+           ''',
+       ),
+       kwargs=dict(infile_stream=data_feeder),
+   )
+   t.start()
+   data_feeder.put('1,2,3\n')
+   data_feeder.put('4,5,6\n')
+   data_feeder.put('7,8,9\n')
+   # Note that the data sent does not have to
+   # correspond to a single row. Any length of
+   # data can be sent.
+   data_feeder.put('10,11,12\n13,14,15\n')
+   # Send an empty string to end the data loader.
+   data_feeder.put('')
+   t.join()
 Utilities
 ---------
 .. currentmodule:: singlestoredb.auth
@@ -228,6 +288,11 @@ calls to the currently selected portal services.
    workspace
 Server Tools
 ------------
+It is possible to start a SingleStoreDB server from the Python SDK in a
+couple of ways: Docker or Cloud Free Tier. Both of these methods are
+described below.
+Docker
+......
 If you have Docker installed on your machine, you can use the Docker interface
 included with the Python SDK to start a SingleStoreDB server in Docker. This
 allows you to open interactive shells, SQL Studio, and also use the `%sql`
@@ -267,6 +332,33 @@ down when the Python process exits.
    SingleStoreDB.kai_url
    SingleStoreDB.studio_url
    SingleStoreDB.open_studio
+   SingleStoreDB.open_shell
+   SingleStoreDB.open_mongosh
+   SingleStoreDB.stop
+Cloud Free Tier
+...............
+The Cloud Free Tier interface works much in the same way as the Docker
+interface, although it doesn't support as many features. To start a
+server in the Cloud Free Tier, you use the following:
+.. sourcecode:: python
+   from singlestoredb.server import free_tier
+   s2db = free_tier.start()
+   with s2db.connect() as conn:
+       with conn.cursor() as cur:
+           cur.execute('SHOW DATABASES')
+           for line in cur:
+               print(line)
+   s2db.stop()
+Just as with the Docker interface, you can also use a Python
+context manager to automatically shut down your connection.
+.. currentmodule:: singlestoredb.server.free_tier
+.. autosummary::
+   :toctree: generated/
+   start
+   SingleStoreDB.connect
+   SingleStoreDB.connection_url
+   SingleStoreDB.http_connection_url
+   SingleStoreDB.kai_url
    SingleStoreDB.open_shell
    SingleStoreDB.open_mongosh
    SingleStoreDB.stop

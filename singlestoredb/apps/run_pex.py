@@ -16,7 +16,7 @@ def ping_port(port, timeout):
             status = True
             return True
         
-        time.sleep(10)
+        time.sleep(15)
 
     status = False
     return False

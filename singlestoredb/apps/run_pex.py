@@ -27,9 +27,9 @@ def run_pex_app(
 	port = app_config.listen_port
  
 	process = subprocess.Popen(['python', file_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    ping_thread = threading.Thread(target=ping_port, args=(host, port,time_out))
-    ping_thread.start()
+    	ping_thread = threading.Thread(target=ping_port, args=(host, port,time_out))
+   	ping_thread.start()
     
-    ping_thread.join()
+    	ping_thread.join()
 
-    return ping_thread.is_alive()
+    	return ping_thread.is_alive()

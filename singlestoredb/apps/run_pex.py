@@ -3,7 +3,6 @@ import threading
 import requests
 import subprocess
 from ._config import AppConfig
-import os
 status = False
 def ping_port(port, timeout):
     url = f'http://0.0.0.0:{port}/'
@@ -32,7 +31,6 @@ def run_pex_app(
     port = app_config.listen_port
 
     print(port)
-    print(os.listdir())
     process = subprocess.Popen(['python3', filepath], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     print(process.pid)
     ping_thread = threading.Thread(target=ping_port, args=(port,timeout))

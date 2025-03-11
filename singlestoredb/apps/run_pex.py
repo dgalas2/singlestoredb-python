@@ -3,7 +3,7 @@ import threading
 import requests
 import subprocess
 from ._config import AppConfig
-
+import os
 status = False
 def ping_port(port, timeout):
     url = f'http://0.0.0.0:{port}/'
@@ -11,30 +11,36 @@ def ping_port(port, timeout):
 
     global status
     while time.time() - start_time < timeout:
-        response = requests.get(url, timeout = 5)
-        if response.status_code == 200:
-            status = True
-            return True
+        try:
+            response = requests.get(url, timeout = 2)
+            if response.status_code == 200:
+                status = True
+                break
+        except:
+            print("Starting Server...")
         
-        time.sleep(5)
+        time.sleep(20)
 
-    status = False
-    return False
+    return status
 
 def run_pex_app(
-	file_path : str,
-	time_out : int,
+	filepath : str,
+	timeout : int,
 ) -> bool:
 	
     app_config = AppConfig.from_env()
     port = app_config.listen_port
 
     print(port)
-    process = subprocess.Popen(['python3', file_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    print(os.listdir())
+    process = subprocess.Popen(['python3', filepath], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     print(process.pid)
-    ping_thread = threading.Thread(target=ping_port, args=(port,time_out))
+    ping_thread = threading.Thread(target=ping_port, args=(port,timeout))
     ping_thread.start()
 
     ping_thread.join()
-
+    if not status:
+        print("Starting server timed out. Please check if there is an error in your server.")
+    else:
+        print(f"Server started on port {port}")
     return status
